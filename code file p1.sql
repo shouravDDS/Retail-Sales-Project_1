@@ -3,26 +3,7 @@ select * from retail_sales;
 
 ---Data cleaning process
 
-alter table retail_sales
-alter column total_sale type numeric;
-
-alter table retail_sales
-rename column quantiy to quantity;
-
-
-
---To chack the null value of the total dataset
-select * from retail_sales
-where sale_time is null;
-
-select * from retail_sales
-where customer_id is null;
-
-
-select * from retail_sales
-where category is null;
-
---chack all column together
+--chack null value all column together
 select * from retail_sales
 where sale_time is null
 		or
@@ -43,39 +24,8 @@ where sale_time is null
 		total_sale is null
 		or
 		date is null
-		
 
-select count(*) from
-(select * from retail_sales
-where sale_time is null
-		or
-		customer_id is null
-		or
-		gender is null
-		or
-		age is null
-		or
-		category is null
-		or
-		quantity is null
-		or
-		price_per_unit is null
-		or
-		cogs is null
-		or
-		total_sale is null
-		or
-		date is null
-) as sub;
-
-
---To count, How many null value have in the datasate
-select count(*) from
-(select * from retail_sales
-where quantity is null) as sub;
-
-
-
+	
 --To delete null value from the dataset
 delete from retail_sales
 where sale_time is null
